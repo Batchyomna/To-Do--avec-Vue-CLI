@@ -1,0 +1,68 @@
+<template>
+  <div>
+     
+     
+      
+    <p  v-if="counterTask == 0" id="rouge">
+      <b-icon icon="emoji-angry"></b-icon> It's time to start working you have {{emoji.length}} to do!! <b-icon icon="emoji-angry"></b-icon>
+    </p>
+    
+    <p v-else-if="counterTask == emoji.length" id="greenFonce">
+      <b-icon icon="emoji-sunglasses"></b-icon> Congratulation!!You finished all the {{emoji.length}} <b-icon icon="emoji-sunglasses"></b-icon>
+    </p>
+    <p v-else-if="counterTask > calculHalf" id="green">
+      <b-icon icon="emoji-laughing"></b-icon> Good!! you made half or more {{counterTask}}/{{emoji.length}} tasks<b-icon icon="emoji-laughing"></b-icon>
+    </p>
+     <p v-else id="orange">
+      <b-icon icon="emoji-smile"></b-icon> Continue that way and you will finish soon, still have {{emoji.length -counterTask}}/{{emoji.length}} tasks<b-icon icon="emoji-smile"></b-icon>
+    </p>  
+  </div>
+</template>
+
+<script>
+
+ export default {
+  name: 'Sentence',
+  props :['emoji'],
+    computed : {
+        counterTask : function(){
+            var x=0;
+            this.emoji.forEach(element => {
+              if(element.todo === false){
+                   x++;
+                 
+                }
+                
+               
+            });
+            return x
+        },
+       calculHalf:function(){
+            
+            var x = this.emoji.length*0.5;
+            return x
+        }
+    }
+
+ 
+}
+
+</script>
+
+<style>
+li{
+   list-style: none;
+ } 
+ #rouge{
+     color:red
+ }
+ #green{
+     color: springgreen;
+ }
+ #greenFonce{
+     color: rgb(13, 63, 13);
+ }
+ #orange{
+     color: orange;
+ }
+</style>
