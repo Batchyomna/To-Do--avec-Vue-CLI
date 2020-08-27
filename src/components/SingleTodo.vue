@@ -19,13 +19,10 @@ export default {
     methods:{
       sendFlag(){
         this.$emit('toggle', this.myelement.id )
-
       }
     }
  
 }
- 
-
 </script>
 
 <style>
