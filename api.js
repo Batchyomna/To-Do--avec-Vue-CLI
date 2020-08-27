@@ -16,13 +16,46 @@ const toDoType = mongoose.model("toDo", {
 })
 
 app.post('/todo', async (req, res) => {
-    const newToDo = new Schema();
-    newToDo.add({ name: 'string', id: 'number', createAt: 'string', todo: 'boolean' });
+    try {
+        var newToDo = toDoType(req.body)
+        var result = await newToDo.save()
+        res.send(result)
+    } catch (err) {
+        res.send(err)
+    }
 
+});
 
-    res.send()
+app.get('/todo', async (req, res) => {
+    try {
+        var result = await toDoType.find().exec();
+        res.send(result)
+    } catch (err) {
+        res.send(err)
+    }
+});
+app.get('/todo/:id', async (req, res) => {
+    try {
+        var myToDo = await toDoType.findById(req.params.id).exec();
+        res.send(myToDo)
+    } catch (err) {
+        res.send(err)
+    }
+});
+
+app.put('/todo/:id', async (req, res) => {
+    try{
+        var updateToDo = await toDoType.findById(req.params.id).exec();
+        updateToDo.set(req.body)
+        var result = await updateToDo.save();
+        res.send(result)
+
+    }catch(err){
+        console.log(err);
+        res.send(err)
+    }
+
 })
-
 app.listen(3000, () => {
     console.log('vous êtes bien connectés à 3000');
 })
