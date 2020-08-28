@@ -43,10 +43,11 @@ app.get('/todo/:id', async (req, res) => {
     }
 });
 
-app.put('/todo/:id', async (req, res) => {
+app.put('/todo/:name', async (req, res) => {
     try{
-        var updateToDo = await toDoType.findById(req.params.id).exec();
-        updateToDo.set(req.body)
+        var updateToDo = await toDoType.findById(req.params.name).exec();
+        updateToDo.todo = !updateToDo.todo
+       
         var result = await updateToDo.save();
         res.send(result)
 
