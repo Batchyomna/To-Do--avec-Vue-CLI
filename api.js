@@ -1,14 +1,22 @@
 
 const express = require('express')
 const app = express()
+const cors = require('cors')//???????????????????????????
 const BodyParser = require('body-parser')
 const mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+
+
 app.use(BodyParser.json())
 app.use(BodyParser.urlencoded({ extended: true }))
 
+app.use(cors())
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');  //????????
+    next();
+  });
+
 mongoose.connect('mongodb://localhost:27017/TodoFullStack', { useNewUrlParser: true, useUnifiedTopology: true });
-const toDoType = mongoose.model("toDo", {
+const toDoType = mongoose.model("toDos", {
     name: 'string',
     id: 'number',
     createAt: 'string',
@@ -45,7 +53,7 @@ app.get('/todo/:id', async (req, res) => {
 
 app.put('/todo/:name', async (req, res) => {
     try{
-        var updateToDo = await toDoType.findById(req.params.name).exec();
+        var updateToDo = await toDoType.findOne({name: req.params.name})
         updateToDo.todo = !updateToDo.todo
        
         var result = await updateToDo.save();

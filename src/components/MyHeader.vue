@@ -1,37 +1,23 @@
 <template>
-
- <div>
- <nav>
+  
+<div>
+    
+ <b-nav>
      <router-link to='/new'> New</router-link>
- </nav>
+      <router-link to='/list'> List</router-link>
+       <router-link to='/done'> done</router-link>
+      <router-link to='/todo'> todo</router-link>
 
+  </b-nav>
  </div>  
-     
    
- 
 </template>
 
 <script>
-
-
 export default {
-    name: 'AddForm',
-    data: () => ({
-            message:'',  
-        }),
-    methods : {
-        addToDo(){
-            this.$emit('myNewToDo', this.message)
-        }
-    }
-  
-      
-
+    name: 'MyHeader',
+    props:['whatToDisplay']
 }
-    
- 
-
- 
 
 </script>
 

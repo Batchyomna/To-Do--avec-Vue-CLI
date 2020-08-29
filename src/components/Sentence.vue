@@ -1,20 +1,17 @@
 <template>
-  <div>
-     
-     
-      
+  <div>  
     <p  v-if="counterTask == 0" id="rouge">
-      <b-icon icon="emoji-angry"></b-icon> It's time to start working you have {{emoji.length}} to do!! <b-icon icon="emoji-angry"></b-icon>
+      <b-icon icon="emoji-angry"></b-icon> It's time to start working you have {{data.length}} to do!! <b-icon icon="emoji-angry"></b-icon>
     </p>
     
-    <p v-else-if="counterTask == emoji.length" id="greenFonce">
-      <b-icon icon="emoji-sunglasses"></b-icon> Congratulation!!You finished all the {{emoji.length}} <b-icon icon="emoji-sunglasses"></b-icon>
+    <p v-else-if="counterTask == data.length" id="greenFonce">
+      <b-icon icon="emoji-sunglasses"></b-icon> Congratulation!!You finished all the {{data.length}} <b-icon icon="emoji-sunglasses"></b-icon>
     </p>
     <p v-else-if="counterTask > calculHalf" id="green">
-      <b-icon icon="emoji-laughing"></b-icon> Good!! you made half or more {{counterTask}}/{{emoji.length}} tasks<b-icon icon="emoji-laughing"></b-icon>
+      <b-icon icon="emoji-laughing"></b-icon> Good!! you made half or more {{counterTask}}/{{data.length}} tasks<b-icon icon="emoji-laughing"></b-icon>
     </p>
      <p v-else id="orange">
-      <b-icon icon="emoji-smile"></b-icon> Continue that way and you will finish soon, still have {{emoji.length -counterTask}}/{{emoji.length}} tasks<b-icon icon="emoji-smile"></b-icon>
+      <b-icon icon="emoji-smile"></b-icon> Continue that way and you will finish soon, still have {{data.length -counterTask}}/{{data.length}} tasks<b-icon icon="emoji-smile"></b-icon>
     </p>  
   </div>
 </template>
@@ -23,11 +20,12 @@
 
  export default {
   name: 'Sentence',
-  props :['emoji'],
+
+  props :['data'],
     computed : {
         counterTask : function(){
             var x=0;
-            this.emoji.forEach(element => {
+            this.data.forEach(element => {
               if(element.todo === false){
                    x++;
                  
@@ -38,7 +36,7 @@
         },
        calculHalf:function(){
             
-            var x = this.emoji.length*0.5;
+            var x = this.data.length*0.5;
             return x
         }
     }

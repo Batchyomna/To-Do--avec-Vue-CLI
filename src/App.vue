@@ -1,9 +1,11 @@
 <template>
   <div id="app" class="jumbotron container">
+
+    
     <!--<img alt="Vue logo" src="./assets/logo.png">-->
     <!--<hello></hello>-->
 
-    <MyJumbotron v-bind:yomna="list" @toggle3="theResulta" @passTheText="addNewTask"></MyJumbotron>
+    <MyJumbotron v-bind:yomna="list"></MyJumbotron>
     
 
   </div>
@@ -12,28 +14,29 @@
 <script>
 
 import MyJumbotron from './components/MyJumbotron.vue'
-
 //import Hello from './components/HelloWorld.vue'
+
 export default {
   name: 'App',
   components :{
    // Hello,
      MyJumbotron , 
   },
-  methods :{
+  method:{
 
-    theResulta(myID){
-      this.list[myID].todo = !this.list[myID].todo // 
-    },
+    // theResulta(myID){
+    //   this.list[myID].todo = !this.list[myID].todo // 
+    // },
 
-    addNewTask(task){
-    var newTask ={
-      id:this.list.length,
-      name: task,
-      todo: true
-    }
-    this.list.push(newTask)
-    }
+    // addNewTask(task){
+    // var newTask ={
+    //   id:this.list.length,
+    //   name: task,
+    //   todo: true
+    // }
+    // this.list.push(newTask)
+    
+    // }
   
   },
 

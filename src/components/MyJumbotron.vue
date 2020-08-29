@@ -1,6 +1,6 @@
 <template>
   <div>
-        
+    <MyHeader/>
     <h1>Todo List</h1>
     <p id="p1">
       New Features we will have to do for this project
@@ -9,35 +9,42 @@
     <p id="p2">
     Easy to use, we created this web app just for you!
     </p>
-    <Sentence v-bind:emoji="yomna"></Sentence>
+    <Sentence v-bind:data="yomna"></Sentence> 
   
     <hr>
-
-    <MyToDo v-bind:todo="yomna" @toggle2="passAgainFlag"></MyToDo>
-    <AddForm @myNewToDo="passTheTask"></AddForm>
+    <router-view></router-view>
+    
+    <!-- <MyToDo v-bind:todo="yomna" @toggle2="passAgainFlag"></MyToDo>-->
+    <!-- <AddForm @myNewToDo="passTheTask"></AddForm>  -->
   </div>
 </template>
 
 <script>
-import MyToDo from './MyToDo.vue'
-import AddForm from './AddForm.vue'
+
+// import MyToDo from './MyToDo.vue'
+ //import AddForm from './AddForm.vue'
 import Sentence from './Sentence.vue'
+import MyHeader from './MyHeader.vue'
 
  export default {
   name: 'MyJumbotron',
-  components :{MyToDo, AddForm, Sentence},
+  // components :{MyToDo, AddForm, Sentence},
   props :['yomna'],
-  methods:{
-    passAgainFlag(data){
-      this.$emit('toggle3', data)
-    },
-    passTheTask(text){
-      console.log(text);
+  components:{
+    MyHeader,
+    Sentence,
+  },
+  // method:{
+  //   passAgainFlag(data){
+  //     this.$emit('toggle3', data)
+  //   },
+    // passTheTask(text){
+    //   console.log(text);
       
-      this.$emit('passTheText', text)
+    //   this.$emit('passTheText', text)
 
-    }
-  }
+    // }
+  //}
 }
 </script>
 
