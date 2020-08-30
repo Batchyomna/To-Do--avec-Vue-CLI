@@ -3,10 +3,10 @@
 <div>
     
  <b-nav>
-     <router-link to='/new'> New</router-link>
-      <router-link to='/list'> List</router-link>
-       <router-link to='/done'> done</router-link>
-      <router-link to='/todo'> todo</router-link>
+      <b-link to="/new">New</b-link>
+       <b-link to="/list">List</b-link>
+        <b-link to="/todo">todo</b-link>
+         <b-link to="/done">done</b-link>
 
   </b-nav>
  </div>  

@@ -20,9 +20,9 @@ const router = new VueRouter({
   mode : 'history', // that is mean that we will use / to change the page not(#)
   routes: [
     {path: '/new', component: AddForm, name: "AddForm"}, 
-    {path: '/list', component: MyToDo , props: { whatToDisplay :"all"}, name:"MyToDo"}, 
-    {path: '/done', component: MyToDo, props: { whatToDisplay :"done"}, name: "MyToDo"}, 
-    {path: '/todo', component: MyToDo, props: { whatToDisplay :"todo"}, name: "MyToDo"}, 
+    {path: '/list', component: MyToDo , props: { whatToDisplay :"all"}}, 
+    {path: '/done', component: MyToDo, props: { whatToDisplay :"done"}}, 
+    {path: '/todo', component: MyToDo, props: { whatToDisplay :"todo"}}, 
 
 
   {path: '*', redirect: '/list', // in case of tapping any thing else, it will be back to the /new page
