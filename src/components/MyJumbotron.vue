@@ -12,7 +12,7 @@
     <Sentence v-bind:data="yomna"></Sentence> 
   
     <hr>
-    <router-view></router-view>
+    <router-view :key="$route.path"></router-view><!-- here with key proerty we force Vue to create a new instance of the component-->
 
     <!-- <MyToDo v-bind:todo="yomna" @toggle2="passAgainFlag"></MyToDo>-->
     <!-- <AddForm @myNewToDo="passTheTask"></AddForm>  -->

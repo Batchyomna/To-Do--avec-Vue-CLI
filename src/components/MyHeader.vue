@@ -10,7 +10,7 @@
 
   </b-nav>
  </div>   -->
- <!-- <div>
+ <div>
     <b-navbar toggleable="lg" type="dark" variant="dark" id="nav" >
        
              <b-nav-item to="/list" class="fontLink">List</b-nav-item> 
@@ -18,8 +18,8 @@
             <b-nav-item to="/done">Done</b-nav-item>
             <b-nav-item to="/new">New</b-nav-item>
     </b-navbar>
-</div> --> 
-<div>
+</div> 
+<!-- <div>
    
         <nav>
             <router-link to="/list">List</router-link>
@@ -27,7 +27,7 @@
             <router-link to="/done">Done</router-link>
             <router-link to="/new">New</router-link>
     </nav>
-</div>
+</div> -->
    
 </template>
 

@@ -34,16 +34,17 @@ export default {
   //           this.$emit('myNewToDo', this.message)
   //       }
   //},
-  //  mounted() {
-  //Axios de ton API
+ 
   method: {
     addToDo : function() {
+      console.log(this.message);
       let myList = [];
       axios.get("http://localhost:3000/todo").then((res) => {
           myList.push(res.data);
         }).catch(function (error) {
           console.log(error);
         });
+        console.log(myList);
 
       axios.post("http://localhost:3000/todo",{
           name: this.message,
