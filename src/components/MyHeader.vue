@@ -11,13 +11,13 @@
   </b-nav>
  </div>   -->
  <div>
-     <b-navbar toggleable="lg" type="dark" variant="dark">
-  <!-- <b-nav tabs fill class="navbar-dark"> -->
-    <b-nav-item to="/list">List</b-nav-item>
-    <b-nav-item to="/todo">todo</b-nav-item>
-    <b-nav-item to="/done">done</b-nav-item>
-    <b-nav-item to="/new">New</b-nav-item>
-  </b-navbar>
+    <b-navbar toggleable="lg" type="dark" variant="dark" id="nav" >
+        
+            <b-nav-item to="/list" class="fontLink">List</b-nav-item> <!--  for link (and router-link) action items -->
+            <b-nav-item to="/todo">ToDo</b-nav-item>
+            <b-nav-item to="/done">Done</b-nav-item>
+            <b-nav-item to="/new">New</b-nav-item>
+    </b-navbar>
 </div>
    
 </template>
@@ -32,6 +32,7 @@ export default {
 
 <style>
 #nav{
-    background: green;
+   color: honeydew !important;
 }
+
 </style>
