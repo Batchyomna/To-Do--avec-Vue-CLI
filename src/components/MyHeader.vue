@@ -10,14 +10,23 @@
 
   </b-nav>
  </div>   -->
- <div>
+ <!-- <div>
     <b-navbar toggleable="lg" type="dark" variant="dark" id="nav" >
-        
-            <b-nav-item to="/list" class="fontLink">List</b-nav-item> <!--  for link (and router-link) action items -->
+       
+             <b-nav-item to="/list" class="fontLink">List</b-nav-item> 
             <b-nav-item to="/todo">ToDo</b-nav-item>
             <b-nav-item to="/done">Done</b-nav-item>
             <b-nav-item to="/new">New</b-nav-item>
     </b-navbar>
+</div> --> 
+<div>
+   
+        <nav>
+            <router-link to="/list">List</router-link>
+            <router-link to="/todo">ToDo</router-link>
+            <router-link to="/done">Done</router-link>
+            <router-link to="/new">New</router-link>
+    </nav>
 </div>
    
 </template>

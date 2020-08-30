@@ -4,7 +4,7 @@
     {{myelement.name}}
   </h5>
 
-  <h5 v-else class="done" v-on:click="changeToDo">
+  <h5 v-else class="done" v-on:click="changeToDo()">
     <b-icon icon="check-circle-fill"></b-icon>
     {{myelement.name}}
   </h5>
@@ -22,9 +22,9 @@ export default {
     //   this.$emit('toggle', this.myelement.id )
     // }
   changeToDo(){
-    axios
-      .put(`http://localhost:3000/todo/{{this.myelement.name}}`)
-      .then(function (response) {
+    console.log(this.myelement.name);
+    let x = this.myelement.name;
+    axios.put(`http://localhost:3000/todo/${x}`).then(function (response) {
         console.log(response);
       })
       .catch(function (error) {

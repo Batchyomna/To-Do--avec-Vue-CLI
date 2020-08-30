@@ -1,7 +1,7 @@
 <template>
   <div>  
     <p  v-if="counterTask == 0" id="rouge">
-      <b-icon icon="emoji-angry"></b-icon> It's time to start working you have {{data.length}} to do!! <b-icon icon="emoji-angry"></b-icon>
+      <b-icon icon="emoji-angry"></b-icon> It's time to start working you have {{data.length}} task to do!! <b-icon icon="emoji-angry"></b-icon>
     </p>
     
     <p v-else-if="counterTask == data.length" id="greenFonce">

@@ -1,9 +1,9 @@
 <template>
   <div>
-    <label for>New Task</label>
+    <label>New Task</label>
     <input v-model="message" placeholder="ToDo Name" type="text" />
     <button @click="addToDo">
-      <b-icon icon="plus-square"></b-icon>Add
+       <b-icon icon="plus-square"></b-icon>Add
     </button>
   </div>
 </template>
@@ -37,27 +37,22 @@ export default {
   //  mounted() {
   //Axios de ton API
   method: {
-    addToDo() {
+    addToDo : function() {
       let myList = [];
-      axios
-        .get("http://localhost:3000/todo")
-        .then((res) => {
+      axios.get("http://localhost:3000/todo").then((res) => {
           myList.push(res.data);
-        })
-        .catch(function (error) {
+        }).catch(function (error) {
           console.log(error);
         });
-      axios
-        .post("http://localhost:3000/todo", {
+
+      axios.post("http://localhost:3000/todo",{
           name: this.message,
           id: myList.length,
           ceatedAt: new Date(),
           todo: true,
-        })
-        .then(function (response) {
+        }).then(function (response) {
           console.log(response);
-        })
-        .catch(function (error) {
+        }).catch(function (error) {
           console.log(error);
         });
     },

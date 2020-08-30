@@ -1,6 +1,6 @@
 <template>
 <div>
-<MyHeader/>
+<MyHeader></MyHeader>
   <div id="app" class="jumbotron container">
 
     
