@@ -1,4 +1,6 @@
 <template>
+<div>
+<MyHeader/>
   <div id="app" class="jumbotron container">
 
     
@@ -9,10 +11,11 @@
     
 
   </div>
+  </div>
 </template>
 
 <script>
-
+import MyHeader from './components/MyHeader.vue'
 import MyJumbotron from './components/MyJumbotron.vue'
 //import Hello from './components/HelloWorld.vue'
 
@@ -20,7 +23,8 @@ export default {
   name: 'App',
   components :{
    // Hello,
-     MyJumbotron , 
+     MyJumbotron ,
+     MyHeader 
   },
   method:{
 

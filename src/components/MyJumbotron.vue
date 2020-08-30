@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MyHeader/>
+    
     <h1>Todo List</h1>
     <p id="p1">
       New Features we will have to do for this project
@@ -13,7 +13,7 @@
   
     <hr>
     <router-view></router-view>
-    
+
     <!-- <MyToDo v-bind:todo="yomna" @toggle2="passAgainFlag"></MyToDo>-->
     <!-- <AddForm @myNewToDo="passTheTask"></AddForm>  -->
   </div>
@@ -24,14 +24,14 @@
 // import MyToDo from './MyToDo.vue'
  //import AddForm from './AddForm.vue'
 import Sentence from './Sentence.vue'
-import MyHeader from './MyHeader.vue'
+
 
  export default {
   name: 'MyJumbotron',
   // components :{MyToDo, AddForm, Sentence},
   props :['yomna'],
   components:{
-    MyHeader,
+    
     Sentence,
   },
   // method:{
