@@ -36,26 +36,21 @@ export default {
   //},
  
   methods: {
-    addToDo: function(event) {
-      console.log(event.target.value);
-      let myList = [];
+    addToDo: function() {
       axios.get("http://localhost:3000/todo").then((res) => {
-          myList.push(res.data);
-        }).catch(function (error) {
-          console.log(error);
-        });
-        console.log(myList);
-
-      axios.post("http://localhost:3000/todo",{
+        axios.post("http://localhost:3000/todo",{
           name: this.message,
-          id: myList.length,
-         
+          id: res.data.length,
+          createdAt: "02/12/2014",
           todo: true,
         }).then(function (response) {
           console.log(response);
         }).catch(function (error) {
           console.log(error);
-        });
+        })   
+      }).catch(function (error) {
+        console.log(error);
+      });        
     },
   },
 };
