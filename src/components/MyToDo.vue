@@ -1,7 +1,7 @@
 <template>
   <ul>
     <li v-for="item in allMyList" :key="item.id">
-      <Single v-bind:myelement="item" @toggle="refrecheThePage()"></Single>
+      <Single v-bind:myelement="item" @reLoad="refrecheThePage"></Single>
     </li>
   </ul>
 </template>
@@ -20,32 +20,44 @@ export default {
     };
   },
   props: ["whatToDisplay"],
-  methods: {
-  refrecheThePage: async function(task) {
-    this.allMyList = await axios.get("http://localhost:3000/todo")
-      console.log(task);
-     
-    },
-    
-    // theResulta(myID){
-    //   this.allMyList[myID].allMyList = !this.allMyList[myID].allMyList // 
-    // },
-  },
+  //methods: {
+  // theResulta(myID){
+  //   this.allMyList[myID].allMyList = !this.allMyList[myID].allMyList //
+  // },
+  //  refrecheThePage: function (flag) {
+  //   if (flag) {
+  //     this.$forceUpdate();
+  //   }
+  // },
+  //},
+
   mounted() {
+    // it will be executed just when we refresh the page
     //Axios de ton API
-   axios.get("http://localhost:3000/todo").then(res => {
-    
-     if(this.whatToDisplay == "all"){ 
-        this.allMyList = res.data 
-      }else if(this.whatToDisplay == "done"){
-       this.allMyList = res.data.filter(element=> element.todo == false )
-      }else if(this.whatToDisplay =="todo"){
-       this.allMyList = res.data.filter(element=> element.todo == true )
-      } 
-    }).catch(function (error) {
-      console.log(error);
-    })
-    
+    this.init(); // call the function init who centent the method get  and refill the data
+  },
+  methods: {
+    init() {
+      axios
+        .get("http://localhost:3000/todo")
+        .then((res) => {
+          if (this.whatToDisplay == "all") {
+            this.allMyList = res.data;
+          } else if (this.whatToDisplay == "done") {
+            this.allMyList = res.data.filter(
+              (element) => element.todo == false
+            );
+          } else if (this.whatToDisplay == "todo") {
+            this.allMyList = res.data.filter((element) => element.todo == true);
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    refrecheThePage: function () {
+      this.init();
+    },
   },
 };
 </script>

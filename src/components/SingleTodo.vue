@@ -26,10 +26,11 @@ export default {
     // }
     changeToDo() {
       let x = this.myelement.name;
+      let that = this // he will not understand this in function fleshed
       axios
         .put(`http://localhost:3000/todo/${x}`)
         .then(function (response) {
-          this.$emit('toggle', x); // now we are sur that we had changed the status of x
+          that.$emit('reLoad', x); // now we are sur that we had changed the status of x
           console.log(response);
         })
         .catch(function (error) {

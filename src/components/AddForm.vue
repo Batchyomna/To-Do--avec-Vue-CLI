@@ -1,11 +1,14 @@
 <template>
+ 
   <div>
-    <label>New Task</label>
-    <input v-model="message" placeholder="ToDo Name" type="text" />
+  <b-form @submit="addToDo">
+    <label for="text">New Task</label>
+    <b-input type="text" id="text" aria-describedby="ToDo Name"></b-input>
     <button @click="addToDo">
        <b-icon icon="plus-square"></b-icon>Add
     </button>
-  </div>
+   </b-form>
+</div>
 </template>
 
 <script>
@@ -38,16 +41,18 @@ export default {
   methods: {
     addToDo: function() {
       let x = (new Date()).toString()
-      console.log(typeof x );
-      console.log(x);
+      //console.log(typeof x );
+      //console.log(x);
       axios.get("http://localhost:3000/todo").then((res) => {// it is better to put post in the get beacuse we will sur that we won' have undefined      
-        axios.post("http://localhost:3000/todo",{
+       console.log(res);
+       axios.post("http://localhost:3000/todo",{
           name: this.message,
-          id: res.data.length,
+          id: Date.now(), // it will add a different number every time
           createdAt: x,
           todo: true,
-        }).then(function (response) {
-          console.log(response);
+        }).then(function (res) {
+          console.log(res);
+          this.message = ""
         }).catch(function (error) {
           console.log(error);
         })   
