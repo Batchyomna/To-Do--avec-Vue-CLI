@@ -1,14 +1,11 @@
 <template>
- 
   <div>
-  <b-form @submit="addToDo">
-    <label for="text">New Task</label>
-    <b-input type="text" id="text" aria-describedby="ToDo Name"></b-input>
+    <label>New Task</label>
+    <input v-model="message" placeholder="ToDo Name" type="text" />
     <button @click="addToDo">
        <b-icon icon="plus-square"></b-icon>Add
     </button>
-   </b-form>
-</div>
+  </div>
 </template>
 
 <script>
@@ -41,6 +38,7 @@ export default {
   methods: {
     addToDo: function() {
       let x = (new Date()).toString()
+      let that = this 
       //console.log(typeof x );
       //console.log(x);
       axios.get("http://localhost:3000/todo").then((res) => {// it is better to put post in the get beacuse we will sur that we won' have undefined      
@@ -52,7 +50,7 @@ export default {
           todo: true,
         }).then(function (res) {
           console.log(res);
-          this.message = ""
+          that.message = "";
         }).catch(function (error) {
           console.log(error);
         })   
