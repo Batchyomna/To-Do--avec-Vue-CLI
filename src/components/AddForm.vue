@@ -37,11 +37,14 @@ export default {
  
   methods: {
     addToDo: function() {
-      axios.get("http://localhost:3000/todo").then((res) => {
+      let x = (new Date()).toString()
+      console.log(typeof x );
+      console.log(x);
+      axios.get("http://localhost:3000/todo").then((res) => {// it is better to put post in the get beacuse we will sur that we won' have undefined      
         axios.post("http://localhost:3000/todo",{
           name: this.message,
           id: res.data.length,
-          createdAt: "02/12/2014",
+          createdAt: x,
           todo: true,
         }).then(function (response) {
           console.log(response);

@@ -4,6 +4,7 @@ const app = express()
 const cors = require('cors')//???????????????????????????
 const BodyParser = require('body-parser')
 const mongoose = require('mongoose');
+var Schema = mongoose.Schema; // to detirme all the types of our data
 
 
 app.use(BodyParser.json())
@@ -14,14 +15,15 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');  //????????
     next();
   });
+ const myschema = new Schema({
+    name: String,
+    id: Number,
+    createdAt: String,
+    todo: Boolean
+  });
 
 mongoose.connect('mongodb://localhost:27017/TodoFullStack', { useNewUrlParser: true, useUnifiedTopology: true });
-const toDoType = mongoose.model("toDos", {
-    name: 'string',
-    id: 'number',
-    createAt: 'string',
-    todo: 'boolean'
-})
+const toDoType = mongoose.model("toDos", myschema )// we pass the name of our collection and the type of data
 
 app.post('/todo', async (req, res) => {
     try {
@@ -64,6 +66,22 @@ app.put('/todo/:name', async (req, res) => {
         res.send(err)
     }
 
+})
+app.delete('/todo/:name', async (req, res) =>{
+    try{
+        var taskToDelete = await toDoType.findOne({name: req.params.name})
+        if(taskToDelete){
+             await toDoType.deleteOne(taskToDelete)
+         res.send("Successful deletion")
+        }else{
+            res.send(" Sorry it is not exsit")
+        }
+       
+       
+    }catch(err){
+        console.log(err);
+        res.send(err)
+    }
 })
 app.listen(3000, () => {
     console.log('vous êtes bien connectés à 3000');

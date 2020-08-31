@@ -24,20 +24,18 @@
   props :['data'],
     computed : {
         counterTask : function(){
-            var x=0;
+            var x = 0;
             this.data.forEach(element => {
               if(element.todo === false){
                    x++;
-                 
                 }
-              
             });
+            console.log("it is the value of task done " + x);
             return x
         },
-       calculHalf:function(){
-            
-            var x = this.data.length*0.5;
-            return x
+        calculHalf:function(){ 
+          var y = this.data.length*0.5;
+          return y
         }
     }
 

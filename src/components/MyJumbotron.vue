@@ -9,7 +9,7 @@
     <p id="p2">
     Easy to use, we created this web app just for you!
     </p>
-    <Sentence v-bind:data="yomna"></Sentence> 
+    <!-- <Sentence v-bind:data="yomna"></Sentence>  -->
   
     <hr>
     <router-view :key="$route.path"></router-view><!-- here with key proerty we force Vue to create a new instance of the component-->
@@ -23,7 +23,7 @@
 
 // import MyToDo from './MyToDo.vue'
  //import AddForm from './AddForm.vue'
-import Sentence from './Sentence.vue'
+//import Sentence from './Sentence.vue'
 
 
  export default {
@@ -32,7 +32,7 @@ import Sentence from './Sentence.vue'
   props :['yomna'],
   components:{
     
-    Sentence,
+    //Sentence,
   },
   // method:{
   //   passAgainFlag(data){
