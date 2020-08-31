@@ -35,9 +35,9 @@ export default {
   //       }
   //},
  
-  method: {
-    addToDo : function() {
-      console.log(this.message);
+  methods: {
+    addToDo: function(event) {
+      console.log(event.target.value);
       let myList = [];
       axios.get("http://localhost:3000/todo").then((res) => {
           myList.push(res.data);
@@ -49,7 +49,7 @@ export default {
       axios.post("http://localhost:3000/todo",{
           name: this.message,
           id: myList.length,
-          ceatedAt: new Date(),
+         
           todo: true,
         }).then(function (response) {
           console.log(response);
