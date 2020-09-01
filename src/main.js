@@ -1,15 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Vuex from 'vuex'
 import App from './App.vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { BootstrapVue, BootstrapVueIcons, NavPlugin, BPagination } from 'bootstrap-vue'
+import 'es6-promise/auto'
 
 
 Vue.use(NavPlugin)
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
+Vue.use(Vuex)
 
 Vue.use(VueRouter)
 Vue.component('b-pagination', BPagination)
@@ -18,6 +21,7 @@ Vue.config.productionTip = false
 
 import MyToDo from './components/MyToDo.vue'
 import AddForm from './components/AddForm.vue'
+import store from './store'
 
 const router = new VueRouter({
   mode : 'history', // that is mean that we will use / to change the page not(#)
@@ -37,5 +41,6 @@ new Vue({
   el:'#app', 
   render: h => h(App),
  router,
+ store,
 }).$mount('#app')
 

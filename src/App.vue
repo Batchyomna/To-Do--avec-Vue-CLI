@@ -1,64 +1,49 @@
 <template>
-<div>
-<MyHeader></MyHeader>
-  <div id="app" class="jumbotron container">
-
-    
-    <!--<img alt="Vue logo" src="./assets/logo.png">-->
-    <!--<hello></hello>-->
-
-    <MyJumbotron v-bind:yomna="list"></MyJumbotron>
-    
-
-  </div>
+  <div>
+    <MyHeader></MyHeader>
+    <div id="app" class="jumbotron container">
+      <MyJumbotron v-bind:yomna="list"></MyJumbotron>
+    </div>
   </div>
 </template>
 
 <script>
-import MyHeader from './components/MyHeader.vue'
-import MyJumbotron from './components/MyJumbotron.vue'
-//import Hello from './components/HelloWorld.vue'
+import MyHeader from "./components/MyHeader.vue";
+import MyJumbotron from "./components/MyJumbotron.vue";
 
 export default {
-  name: 'App',
-  components :{
-   // Hello,
-     MyJumbotron ,
-     MyHeader 
+  name: "App",
+  components: {
+    MyJumbotron,
+    MyHeader,
   },
-  method:{
-
-    // theResulta(myID){
-    //   this.list[myID].todo = !this.list[myID].todo // 
-    // },
-
-    // addNewTask(task){
-    // var newTask ={
-    //   id:this.list.length,
-    //   name: task,
-    //   todo: true
-    // }
-    // this.list.push(newTask)
-    
-    // }
-  
+  method: {
+     init() {
+      axios
+        .get("http://localhost:3000/todo")
+        .then((res) => {
+          // if (this.whatToDisplay == "all") {
+          //   this.allMyList = res.data;
+          // } else if (this.whatToDisplay == "done") {
+          //   this.allMyList = res.data.filter((element) => element.todo == false);
+          // } else if (this.whatToDisplay == "todo") {
+          //   this.allMyList = res.data.filter((element) => element.todo == true);
+          // }
+          store.dispatch('trigerMutation', res.data)
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
   },
+   mounted() {
+     this.init()
+   },
 
-  
-  data (){
-    return {
-      list:[
-        {id:0, name:"Ecrire le sujet", todo: true },
-        {id:1, name:"Faire le sujet", todo: true },
-        {id:2, name:"Vendre le sujet", todo: true },
-        {id:3, name:"Partir en acances", todo: true },
-      ]
-    }
+  data() {
+    return {};
   },
- 
- 
-}
-
+};
 </script>
 
 <style>
@@ -70,17 +55,16 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-h1{
-  font-size:100px;
+h1 {
+  font-size: 100px;
 }
-#p1{
-  font-size:30px;
+#p1 {
+  font-size: 30px;
 }
-#p2{
-  font-size:20px;
+#p2 {
+  font-size: 20px;
 }
-input{
+input {
   margin-right: 5px;
 }
- 
 </style>
