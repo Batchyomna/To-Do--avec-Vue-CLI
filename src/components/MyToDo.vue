@@ -31,9 +31,8 @@ export default {
   // },
   //},
 
-  mounted() {
-    // it will be executed just when we refresh the page
-    //Axios de ton API
+  mounted() { // it will be executed just when we refresh the page
+   
     this.init(); // call the function init who centent the method get  and refill the data
   },
   methods: {

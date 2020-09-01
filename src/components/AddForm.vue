@@ -1,7 +1,7 @@
 <template>
   <div>
     <label>New Task</label>
-    <input v-model="message" placeholder="ToDo Name" type="text" />
+    <input v-model="message" placeholder="ToDo Name" type="text" @keydown.enter="addToDo" />
     <button @click="addToDo">
        <b-icon icon="plus-square"></b-icon>Add
     </button>
