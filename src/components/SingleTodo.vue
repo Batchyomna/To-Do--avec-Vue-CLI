@@ -1,17 +1,16 @@
 <template>
-<div>
-  <h5 v-if="myelement.todo" class="nonDone" v-on:click="changeToDo()">
+<b-row class="justify-content-md-center"> 
+  <h6 v-if="myelement.todo" class="nonDone" v-on:click="changeToDo()">
     <b-icon icon="check2-circle"></b-icon>
-    {{myelement.name}}
-     <b-icon icon="trash" class="orange" v-on:click="removeElem(myelement.name)"></b-icon>
-  </h5>
+    {{myelement.name}}  
+  </h6>
 
-  <h5 v-else class="done" v-on:click="changeToDo()">
+  <h6 v-else class="done" v-on:click="changeToDo()">
     <b-icon icon="check-circle-fill"></b-icon>
-    {{myelement.name}}
-    <b-icon icon="trash" class="rouge" v-on:click="removeElem(myelement.name)"></b-icon>
-  </h5>
-  </div>
+    {{myelement.name}} 
+  </h6>
+  <b-icon icon="trash" class="deletion" v-on:click="removeElem()"></b-icon>
+</b-row> 
 </template>
 
 <script>
@@ -37,7 +36,8 @@ export default {
           console.log(error);
         });
     },
-    removeElem(x) {
+    removeElem() {
+      let x = this.myelement.name;
       axios
         .delete(`http://localhost:3000/todo/${x}`)
         .then(function (response) {
@@ -52,16 +52,28 @@ export default {
 </script>
 
 <style>
-.done {
+.done{
   text-decoration: line-through;
 }
-h5 {
+h6{
   cursor: pointer;
+  text-align: center;
+  
 }
-.rouge {
+.deletion{
+  cursor: pointer;
   color: red;
+ 
 }
-.orange {
-  color: orange;
+
+#myDiv{
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  flex-direction: row;
+ border: 1px solid gray;
+ border-radius: 20px;
 }
+
 </style>

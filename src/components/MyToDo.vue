@@ -1,9 +1,15 @@
 <template>
-  <ul>
-    <li v-for="item in allMyList" :key="item.id">
-      <Single v-bind:myelement="item" @reLoad="refrecheThePage"></Single>
-    </li>
-  </ul>
+  <div>
+    <ul>
+
+      <li v-for="item in allMyList" :key="item.id">
+        <Single v-bind:myelement="item" @reLoad="refreshPage"></Single>
+      </li>
+    </ul>
+    <div class="mt-3">
+      <b-pagination v-model="currentPage" pills :total-rows="rows" align="center" ></b-pagination>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -17,6 +23,8 @@ export default {
   data() {
     return {
       allMyList: [],
+      rows: (this.allMyList)*0.1,
+      currentPage: 1,
     };
   },
   props: ["whatToDisplay"],
@@ -24,15 +32,16 @@ export default {
   // theResulta(myID){
   //   this.allMyList[myID].allMyList = !this.allMyList[myID].allMyList //
   // },
-  //  refrecheThePage: function (flag) {
+  //  refreshPage: function (flag) {
   //   if (flag) {
   //     this.$forceUpdate();
   //   }
   // },
   //},
 
-  mounted() { // it will be executed just when we refresh the page
-   
+  mounted() {
+    // it will be executed just when we refresh the page
+
     this.init(); // call the function init who centent the method get  and refill the data
   },
   methods: {
@@ -54,7 +63,7 @@ export default {
           console.log(error);
         });
     },
-    refrecheThePage: function () {
+    refreshPage: function () {
       this.init();
     },
   },

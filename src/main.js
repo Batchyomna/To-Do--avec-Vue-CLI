@@ -3,13 +3,16 @@ import VueRouter from 'vue-router'
 import App from './App.vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
-import { BootstrapVue, BootstrapVueIcons, NavPlugin } from 'bootstrap-vue'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import { BootstrapVue, BootstrapVueIcons, NavPlugin, BPagination } from 'bootstrap-vue'
 
 
 Vue.use(NavPlugin)
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
+
 Vue.use(VueRouter)
+Vue.component('b-pagination', BPagination)
 
 Vue.config.productionTip = false
 
