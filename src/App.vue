@@ -2,12 +2,13 @@
   <div>
     <MyHeader></MyHeader>
     <div id="app" class="jumbotron container">
-      <MyJumbotron v-bind:yomna="list"></MyJumbotron>
+      <MyJumbotron></MyJumbotron>
     </div>
   </div>
 </template>
 
 <script>
+const axios = require("axios");
 import MyHeader from "./components/MyHeader.vue";
 import MyJumbotron from "./components/MyJumbotron.vue";
 
@@ -17,19 +18,12 @@ export default {
     MyJumbotron,
     MyHeader,
   },
-  method: {
+  methods: {
      init() {
       axios
         .get("http://localhost:3000/todo")
         .then((res) => {
-          // if (this.whatToDisplay == "all") {
-          //   this.allMyList = res.data;
-          // } else if (this.whatToDisplay == "done") {
-          //   this.allMyList = res.data.filter((element) => element.todo == false);
-          // } else if (this.whatToDisplay == "todo") {
-          //   this.allMyList = res.data.filter((element) => element.todo == true);
-          // }
-          store.dispatch('trigerMutation', res.data)
+         this.$store.dispatch('triggerMutation', res.data)
         })
         .catch(function (error) {
           console.log(error);
@@ -39,10 +33,6 @@ export default {
    mounted() {
      this.init()
    },
-
-  data() {
-    return {};
-  },
 };
 </script>
 

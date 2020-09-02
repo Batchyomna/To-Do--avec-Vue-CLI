@@ -10,13 +10,50 @@ const store = new Vuex.Store({
       
     },
     mutations: {
-        changeTheData(state, dataReceive) {
-       state.list = dataReceive
-      }
+        changeTheData(state, dataReceived) {
+            console.log(dataReceived);
+           state.list = dataReceived
+        },
+        changeOnce(state,x){
+           let myToDo = state.list.find(element => element.name === x);
+           myToDo.todo = false;
+        },
+        deletElement(state, taskName){
+            let index = state.list.indexOf(taskName);
+            state.list.splice(index,1)
+        },
+        postElement (state, taskData){
+            state.list.push(taskData)
+        }
+
     },
+
     actions:{
-        trigerMutation(context, dataReceive){
-            context.commit('changeTheData', dataReceive)
+        triggerMutation(context, dataReceived){
+            console.log('actions....'+ dataReceived);
+            context.commit('changeTheData', dataReceived)
+        },
+        trigerForOnce(context, x){
+            context.commit('changeOnce', x)
+        },
+        trigerToDelete(context, taskName){
+            context.commit('deletElement', taskName)
+        },
+        triggerToPost (context, taskData){
+            context.commit('postElement', taskData)
+        }
+    },
+    getters:{
+        sepatrateTheData: (state) => (whatToDisplay) =>{
+            if (whatToDisplay === "all") {
+             return state.list;
+            }else if (whatToDisplay === "done"){
+             return state.list.filter((element) => element.todo == false);
+            }else if (whatToDisplay === "todo"){
+             return state.list.filter((element) => element.todo == true);
+            }
         }
     }
-  })
+})
+
+export default store

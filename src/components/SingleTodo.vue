@@ -4,8 +4,8 @@
     <b-icon icon="check2-circle"></b-icon>
     {{myelement.name}}  
   </h6>
-
-  <h6 v-else class="done" v-on:click="changeToDo()">
+  <!--styleobj is a variable for give the required style to be assigned to the div. -->
+  <h6 v-else class="done" v-on:click="changeToDo()" >
     <b-icon icon="check-circle-fill"></b-icon>
     {{myelement.name}} 
   </h6>
@@ -14,15 +14,12 @@
 </template>
 
 <script>
-const axios = require("axios");
 
+const axios = require("axios");
 export default {
   name: "Single",
   props: ["myelement"],
   methods: {
-    // sendFlag(){
-    //   this.$emit('toggle', this.myelement.id )
-    // }
     changeToDo() {
       let x = this.myelement.name;
       let that = this // he will not understand this in function fleshed
@@ -30,7 +27,8 @@ export default {
         .put(`http://localhost:3000/todo/${x}`)
         .then(function (response) {
           that.$emit('reLoad', x); // now we are sur that we had changed the status of x
-          console.log(response);
+         this.$store.dispatch('trigerForOnce',x);
+         console.log(response);
         })
         .catch(function (error) {
           console.log(error);
@@ -41,12 +39,16 @@ export default {
       axios
         .delete(`http://localhost:3000/todo/${x}`)
         .then(function (response) {
+          this.$store.dispatch('trigerToDelete',x)
           console.log(response);
         })
         .catch(function (error) {
           console.log(error);
         });
     },
+    changeColor : function() {
+        this.styleobj.color = "green";
+    }
   },
 };
 </script>
@@ -57,15 +59,12 @@ export default {
 }
 h6{
   cursor: pointer;
-  text-align: center;
-  
+  text-align: center;  
 }
 .deletion{
   cursor: pointer;
   color: red;
- 
 }
-
 #myDiv{
   width: 50%;
   display: flex;
@@ -75,5 +74,4 @@ h6{
  border: 1px solid gray;
  border-radius: 20px;
 }
-
 </style>

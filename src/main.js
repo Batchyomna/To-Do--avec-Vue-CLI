@@ -21,7 +21,7 @@ Vue.config.productionTip = false
 
 import MyToDo from './components/MyToDo.vue'
 import AddForm from './components/AddForm.vue'
-import store from './store'
+import store from './store.js'
 
 const router = new VueRouter({
   mode : 'history', // that is mean that we will use / to change the page not(#)
@@ -31,16 +31,14 @@ const router = new VueRouter({
     {path: '/done', component: MyToDo, props: { whatToDisplay :"done"}}, 
     {path: '/todo', component: MyToDo, props: { whatToDisplay :"todo"}}, 
 
-    {path: '*', redirect: '/list', // in case of tapping any thing else, it will be back to the /new page
-    }
+    {path: '*', redirect: '/list'} // in case of tapping any thing else, it will be back to the /new page  
   ]
-  
 });
 
 new Vue({
-  el:'#app', 
+  el:'#app',
+  store: store, 
+  router,
   render: h => h(App),
- router,
- store,
 }).$mount('#app')
 
