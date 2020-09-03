@@ -5,7 +5,7 @@
       <!-- {{ names }} -->
       </b-list-group>
     <div class="mt-3">
-     <b-pagination v-model="currentPage" pills :total-rows="rows" align="center" variant="secondary"></b-pagination>
+     <b-pagination v-model="currentPage" pills :total-rows="rows" align="center"  variant="warning"></b-pagination>
     </div>
   </div>
 </template>

@@ -44,10 +44,12 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+ box-shadow: 0px 0px 8px 10px #888888;
 }
 #mySite{
-  background: rosybrown;
+  background: #E6B68D;
   min-height: 800px;
+ 
 }
 h1 {
   font-size: 100px;

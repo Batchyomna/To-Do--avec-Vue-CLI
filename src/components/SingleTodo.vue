@@ -4,7 +4,7 @@
     <b-icon icon="check2-circle"></b-icon>
     {{myelement.name}}  
   </h6>
-  <!--styleobj is a variable for give the required style to be assigned to the div. -->
+  
   <h6 v-else class="done" v-on:click="changeToDo()" >
     <b-icon icon="check-circle-fill"></b-icon><i>
     {{myelement.name}} </i>
@@ -80,7 +80,6 @@ h6:hover {
 }
 
 #deletIcon{
-  
   margin-left: 5%;
 }
 

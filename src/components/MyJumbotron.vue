@@ -12,24 +12,17 @@
     <!-- <Sentence v-bind:data="yomna"></Sentence>  -->
   
     <hr>
-    <router-view :key="$route.path"></router-view><!-- here with key proerty we force Vue to create a new instance of the component-->
+    <router-view :key="$route.path"></router-view>
 
-    <!-- <MyToDo v-bind:todo="yomna" @toggle2="passAgainFlag"></MyToDo>-->
-    <!-- <AddForm @myNewToDo="passTheTask"></AddForm>  -->
   </b-card>
   </b-card-group>
 </template>
 
 <script>
-
-// import MyToDo from './MyToDo.vue'
- //import AddForm from './AddForm.vue'
 //import Sentence from './Sentence.vue'
-
-
  export default {
   name: 'MyJumbotron',
-  // components :{MyToDo, AddForm, Sentence},
+  // components :{ Sentence},
   props :['yomna'],
   components:{
     

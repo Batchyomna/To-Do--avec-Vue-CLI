@@ -26,7 +26,7 @@ export default {
         let today = new Date().toString();
         let newTask = {
           name: this.message,
-          id: Date.now(),
+          id: Date.now(), // create a number deffirent every time
           createdAt: today,
           todo: true,
         };
