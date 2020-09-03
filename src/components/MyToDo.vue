@@ -22,7 +22,7 @@ export default {
   data() {
     return {
      
-      rows: (this.allMyList)*0.1,
+      rows:this.loadPage*0.1,
       currentPage: 1,
     }
   },
