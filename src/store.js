@@ -11,12 +11,13 @@ const store = new Vuex.Store({
     },
     mutations: {
         changeTheData(state, dataReceived) {
-            console.log(dataReceived);
            state.list = dataReceived
         },
         changeOnce(state,x){
-           let myToDo = state.list.find(element => element.name === x);
+           let myToDoindex = state.list.indexOf(x);
+           let myToDo = state.list.splice(myToDoindex,1)
            myToDo.todo = false;
+           console.log(state);
         },
         deletElement(state, taskName){
             let index = state.list.indexOf(taskName);

@@ -11,9 +11,9 @@
   </b-nav>
  </div>   -->
  <div>
-    <b-navbar toggleable="lg" type="dark" variant="dark" id="nav" >
+    <b-navbar toggleable="lg" type="dark" variant="secondary" id="nav" >
        
-             <b-nav-item to="/list" class="fontLink">List</b-nav-item> 
+             <b-nav-item to="/list">List</b-nav-item> 
             <b-nav-item to="/todo">ToDo</b-nav-item>
             <b-nav-item to="/done">Done</b-nav-item>
             <b-nav-item to="/new">New</b-nav-item>
@@ -33,8 +33,7 @@
 
 <script>
 export default {
-    name: 'MyHeader',
-    props:['whatToDisplay']
+    name: 'MyHeader'
 }
 
 </script>

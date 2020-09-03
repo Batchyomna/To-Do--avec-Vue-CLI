@@ -6,10 +6,10 @@
   </h6>
   <!--styleobj is a variable for give the required style to be assigned to the div. -->
   <h6 v-else class="done" v-on:click="changeToDo()" >
-    <b-icon icon="check-circle-fill"></b-icon>
-    {{myelement.name}} 
+    <b-icon icon="check-circle-fill"></b-icon><i>
+    {{myelement.name}} </i>
   </h6>
-  <b-icon icon="trash" class="deletion" v-on:click="removeElem()"></b-icon>
+  <b-icon icon="trash" class="deletion" v-on:click="removeElem()" id="pubelle"></b-icon>
 </b-row> 
 </template>
 
@@ -19,15 +19,19 @@ const axios = require("axios");
 export default {
   name: "Single",
   props: ["myelement"],
+  data() {
+    return {
+     hover: false,
+    } 
+  },
   methods: {
     changeToDo() {
       let x = this.myelement.name;
-      let that = this // he will not understand this in function fleshed
+      let that = this
       axios
         .put(`http://localhost:3000/todo/${x}`)
         .then(function (response) {
-          that.$emit('reLoad', x); // now we are sur that we had changed the status of x
-         this.$store.dispatch('trigerForOnce',x);
+         that.$store.dispatch('trigerForOnce',x);
          console.log(response);
         })
         .catch(function (error) {
@@ -53,20 +57,29 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+
 .done{
   text-decoration: line-through;
+  color: rosybrown;
+  
 }
 h6{
   cursor: pointer;
   text-align: center;  
+  font-size:20px ;
 }
-.deletion{
+h6:hover {
+  color:#E6AE76;
+  font-size: 25px;
+}
+#pubelle:hover{
   cursor: pointer;
   color: red;
+  width: 100px;
 }
 #myDiv{
-  width: 50%;
+  width: 30%;
   display: flex;
   justify-content: space-between;
   align-content: center;
@@ -74,4 +87,5 @@ h6{
  border: 1px solid gray;
  border-radius: 20px;
 }
+
 </style>

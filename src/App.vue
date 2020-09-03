@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div id="mySite">
     <MyHeader></MyHeader>
-    <div id="app" class="jumbotron container">
+    <div id="app" class="container">
       <MyJumbotron></MyJumbotron>
     </div>
   </div>
@@ -44,6 +44,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+#mySite{
+  background: rosybrown;
+  min-height: 800px;
 }
 h1 {
   font-size: 100px;

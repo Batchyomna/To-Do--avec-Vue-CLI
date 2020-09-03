@@ -1,11 +1,16 @@
 <template>
-  <div>
-    <label>New Task</label>
-    <input v-model="message" placeholder="ToDo Name" type="text" @keydown.enter="addToDo" />
-    <button @click="addToDo">
-       <b-icon icon="plus-square"></b-icon>Add
-    </button>
-  </div>
+   
+    <b-form-group id="input-group-2" label="New Task:" label-for="input-2" variant="info">
+      <b-form-input
+        id="input-2"
+        v-model="message"
+        required
+        placeholder="Enter your Task"
+        @keydown.enter="addToDo"
+      ></b-form-input>
+      <b-button variant="secondary" @click="addToDo">Submit</b-button>
+    </b-form-group>
+ 
 </template>
 
 <script>
@@ -16,24 +21,30 @@ export default {
     message: "",
   }),
   methods: {
-    addToDo: function() {
-      let today = (new Date()).toString()
-      let newTask ={
+    addToDo: function () {
+      if (this.message) {
+        let today = new Date().toString();
+        let newTask = {
           name: this.message,
           id: Date.now(),
           createdAt: today,
           todo: true,
-        }
+        };
 
-       axios.post("http://localhost:3000/todo",newTask)
-            .then(function (res) {
-                this.$store.dispatch('triggerToPost',newTask) 
-                
-                console.log(res);
-            }).catch(function (error) {
-                console.log(error);
-        });  
-        this.message = "";     
+        axios
+          .post("http://localhost:3000/todo", newTask)
+          .then(function (res) {
+            this.$store.dispatch("triggerToPost", newTask);
+
+            console.log(res);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        this.message = "";
+      }else{
+        alert('You have to fill the champs first')
+      }
     },
   },
 };

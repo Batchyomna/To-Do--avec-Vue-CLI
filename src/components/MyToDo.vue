@@ -1,13 +1,11 @@
 <template>
-  <div>
-    <ul>
-      <li v-for="item in loadPage" :key="item.id">
-        <Single v-bind:myelement="item"></Single>
-      </li>
-    </ul>
-   <!-- {{ names }} -->
+  <div id="myList">
+    <b-list-group v-for="item in loadPage" :key="item.id">
+      <b-list-group-item button variant="info"><Single v-bind:myelement="item"></Single></b-list-group-item>
+      <!-- {{ names }} -->
+      </b-list-group>
     <div class="mt-3">
-      <b-pagination v-model="currentPage" pills :total-rows="rows" align="center"></b-pagination>
+     <b-pagination v-model="currentPage" pills :total-rows="rows" align="center"></b-pagination>
     </div>
   </div>
 </template>
@@ -42,13 +40,7 @@ export default {
 </script>
 
 <style>
-li {
-  list-style: none;
-}
-.myinput {
-  margin-right: 10px;
-}
-.done {
-  text-decoration: line-through;
-}
+
+
+
 </style>

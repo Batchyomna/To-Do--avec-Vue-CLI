@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <b-card-group deck>
+     <b-card header="Card Todo List">
     
-    <h1>Todo List</h1>
     <p id="p1">
       New Features we will have to do for this project
     </p>
@@ -16,7 +16,8 @@
 
     <!-- <MyToDo v-bind:todo="yomna" @toggle2="passAgainFlag"></MyToDo>-->
     <!-- <AddForm @myNewToDo="passTheTask"></AddForm>  -->
-  </div>
+  </b-card>
+  </b-card-group>
 </template>
 
 <script>
