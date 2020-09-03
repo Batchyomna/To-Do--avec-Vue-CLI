@@ -9,7 +9,9 @@
     <b-icon icon="check-circle-fill"></b-icon><i>
     {{myelement.name}} </i>
   </h6>
-  <b-icon icon="trash" class="deletion" v-on:click="removeElem()" id="pubelle"></b-icon>
+  <div id="deletIcon">
+     <b-icon icon="trash" class="deletion" v-on:click="removeElem()"></b-icon>
+  </div>
 </b-row> 
 </template>
 
@@ -31,7 +33,7 @@ export default {
       axios
         .put(`http://localhost:3000/todo/${x}`)
         .then(function (response) {
-         that.$store.dispatch('trigerForOnce',x);
+         that.$store.dispatch('triggerForOnce',that.myelement);// marche parfaitement
          console.log(response);
         })
         .catch(function (error) {
@@ -40,19 +42,17 @@ export default {
     },
     removeElem() {
       let x = this.myelement.name;
+      let that = this
       axios
         .delete(`http://localhost:3000/todo/${x}`)
         .then(function (response) {
-          this.$store.dispatch('trigerToDelete',x)
+          that.$store.dispatch('triggerToDelete',that.myelement)
           console.log(response);
         })
         .catch(function (error) {
           console.log(error);
         });
     },
-    changeColor : function() {
-        this.styleobj.color = "green";
-    }
   },
 };
 </script>
@@ -73,19 +73,15 @@ h6:hover {
   color:#E6AE76;
   font-size: 25px;
 }
-#pubelle:hover{
+#deletIcon:hover{
   cursor: pointer;
   color: red;
   width: 100px;
 }
-#myDiv{
-  width: 30%;
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-  flex-direction: row;
- border: 1px solid gray;
- border-radius: 20px;
+
+#deletIcon{
+  
+  margin-left: 5%;
 }
 
 </style>

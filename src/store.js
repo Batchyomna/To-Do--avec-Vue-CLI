@@ -13,15 +13,15 @@ const store = new Vuex.Store({
         changeTheData(state, dataReceived) {
            state.list = dataReceived
         },
-        changeOnce(state,x){
-           let myToDoindex = state.list.indexOf(x);
-           let myToDo = state.list.splice(myToDoindex,1)
-           myToDo.todo = false;
-           console.log(state);
+        changeOnce(state,x){// x = an objet
+           let myToDoindex = state.list.indexOf(x); 
+           x.todo = !x.todo
+           state.list.splice(myToDoindex, 1,x); // replace with 3 parameters
         },
-        deletElement(state, taskName){
-            let index = state.list.indexOf(taskName);
-            state.list.splice(index,1)
+        deletElement(state, task){
+            let index = state.list.indexOf(task);           
+            state.list.splice(index,1) // cut
+            
         },
         postElement (state, taskData){
             state.list.push(taskData)
@@ -31,13 +31,14 @@ const store = new Vuex.Store({
 
     actions:{
         triggerMutation(context, dataReceived){
-            console.log('actions....'+ dataReceived);
+            // console.log('actions....'+ dataReceived);
             context.commit('changeTheData', dataReceived)
         },
-        trigerForOnce(context, x){
+        triggerForOnce(context, x){
             context.commit('changeOnce', x)
         },
-        trigerToDelete(context, taskName){
+        triggerToDelete(context, taskName){
+            
             context.commit('deletElement', taskName)
         },
         triggerToPost (context, taskData){

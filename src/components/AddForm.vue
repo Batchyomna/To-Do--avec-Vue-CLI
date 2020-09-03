@@ -1,6 +1,6 @@
 <template>
    
-    <b-form-group id="input-group-2" label="New Task:" label-for="input-2" variant="info">
+    <b-form-group id="input-group-2" label-for="input-2" variant="info">
       <b-form-input
         id="input-2"
         v-model="message"
@@ -30,12 +30,11 @@ export default {
           createdAt: today,
           todo: true,
         };
-
+        let that = this
         axios
           .post("http://localhost:3000/todo", newTask)
           .then(function (res) {
-            this.$store.dispatch("triggerToPost", newTask);
-
+            that.$store.dispatch("triggerToPost", newTask);
             console.log(res);
           })
           .catch(function (error) {

@@ -1,11 +1,11 @@
 <template>
   <div id="myList">
-    <b-list-group v-for="item in loadPage" :key="item.id">
-      <b-list-group-item button variant="info"><Single v-bind:myelement="item"></Single></b-list-group-item>
+    <b-list-group v-for="item in loadPage" :key="item.id" variant="warning">
+      <b-list-group-item button variant="warning"><Single v-bind:myelement="item"></Single></b-list-group-item>
       <!-- {{ names }} -->
       </b-list-group>
     <div class="mt-3">
-     <b-pagination v-model="currentPage" pills :total-rows="rows" align="center"></b-pagination>
+     <b-pagination v-model="currentPage" pills :total-rows="rows" align="center" variant="secondary"></b-pagination>
     </div>
   </div>
 </template>
