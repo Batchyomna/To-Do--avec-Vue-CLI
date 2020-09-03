@@ -8,6 +8,10 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { BootstrapVue, BootstrapVueIcons, NavPlugin, BPagination } from 'bootstrap-vue'
 import 'es6-promise/auto'
 
+import JwPagination from 'jw-vue-pagination';
+
+Vue.component('jw-pagination', JwPagination);
+
 
 Vue.use(NavPlugin)
 Vue.use(BootstrapVue)
